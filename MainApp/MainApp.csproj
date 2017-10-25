@@ -105,13 +105,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBson.cs" />
-    <Compile Include="Models\Candidate.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactHistory.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Skill.cs" />
-    <Compile Include="Models\WantedPerson.cs" />
+    <Compile Include="Models\Candidate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

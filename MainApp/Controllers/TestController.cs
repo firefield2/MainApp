@@ -23,8 +23,8 @@ namespace MainApp.Controllers
             switch (id)
             {
                 case 1:
-                    Repository<Candidate> database1 = new Repository<Candidate>("candidates");
-                    database1.Add(new Candidate() { Adress = "test", Availability = "test", FirstName = "test", LastName = "test", Price = "test", Skills = new List<Skill>() { new Skill() { Level = "test", Name = "JS" } }, Expirience = new List<string>() { "test1", "test2" }, Cv = new List<string>() { "test1", "test2" } });
+                    Repository<Person> database1 = new Repository<Person>("candidates");
+                    database1.Add(new Person() { Adress = "test", Availability = "test", FirstName = "test", LastName = "test", Price = "test", Skills = new List<Skill>() { new Skill() { Level = "test", Name = "JS" } }, Expirience = new List<string>() { "test1", "test2" }, Cv = new List<string>() { "test1", "test2" } });
                     break;
                 case 2:
                     Repository<Company> database2 = new Repository<Company>("companies");
