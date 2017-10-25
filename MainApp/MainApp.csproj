@@ -98,23 +98,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Contract.cs" />
     <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Demand.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBson.cs" />
-    <Compile Include="Models\ContactEvent.cs" />
-    <Compile Include="Models\Cv.cs" />
-    <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Company.cs" />
-    <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\ContactHistory.cs" />
-    <Compile Include="Models\Contract.cs" />
+    <Compile Include="Models\Entities\ContactEvent.cs" />
+    <Compile Include="Models\Entities\Cv.cs" />
+    <Compile Include="Models\Entities\FinishedContract.cs" />
+    <Compile Include="Models\Entities\Person.cs" />
+    <Compile Include="Models\Entities\Company.cs" />
+    <Compile Include="Models\Entities\Contact.cs" />
+    <Compile Include="Models\Entities\ContactHistory.cs" />
+    <Compile Include="Models\Entities\Contract.cs" />
     <Compile Include="Models\Repository.cs" />
-    <Compile Include="Models\Skill.cs" />
-    <Compile Include="Models\Candidate.cs" />
+    <Compile Include="Models\Entities\Skill.cs" />
+    <Compile Include="Models\Entities\Candidate.cs" />
+    <Compile Include="Models\Entities\WorkExpirience.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
