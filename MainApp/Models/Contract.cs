@@ -11,7 +11,6 @@ namespace MainApp.Models
     {
         [BsonId]
         public ObjectId Id { get; set; }
-
         public ObjectId Company { get; set; }
         public List<Candidate> Candidates { get; set; }
         public string ContractStatus{ get; set; }

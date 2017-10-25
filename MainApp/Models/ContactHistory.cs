@@ -13,5 +13,6 @@ namespace MainApp.Models
         public ObjectId Id { get; set; }
         public ObjectId PersonId { get; set; }
         public ObjectId ContractId { get; set; }
+        public List<ContactEvent> Events { get; set; }
     }
 }

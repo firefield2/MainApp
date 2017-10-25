@@ -17,8 +17,7 @@ namespace MainApp.Models
         public string Availability { get; set; }
         public string Price { get; set; }
         public List<Skill> Skills { get; set; }
-        public List<string> Cv { get; set; }
         public List<string> Expirience { get; set; }
-        public ObjectId CV { get; set; }
+        public List<Cv> Files { get; set; }
     }
 }
