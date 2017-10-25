@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using MongoDB.Bson;
 
-namespace MainApp.Models
+namespace MainApp.Models.Entities
 {
     public class Contract :IBson
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Bson;
 
-namespace MainApp.Models
+namespace MainApp.Models.Entities
 {
     public class Candidate :IBson
     {

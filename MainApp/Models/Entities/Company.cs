@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace MainApp.Models
+namespace MainApp.Models.Entities
 {
     public class Company : IBson
     {

@@ -128,6 +128,18 @@ namespace MainApp.Controllers
                         
                     });
                     break;
+                case 7:
+                    Repository<AppDictionary> database7 = new Repository<AppDictionary>("Dictionary");
+                    database7.Add(new AppDictionary()
+                    {
+                        Skills = new List<string>
+                        {
+                            "JS",
+                            "PHP", 
+                            "C#"
+                        }
+                    });
+                    break;
                 default:
                     break;
             }

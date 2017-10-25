@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MainApp.Models
+namespace MainApp.Models.Entities
 {
     public class ContactEvent
     {

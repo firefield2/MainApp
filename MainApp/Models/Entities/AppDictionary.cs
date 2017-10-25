@@ -7,11 +7,11 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace MainApp.Models.Entities
 {
-    public class ContactHistory : IBson
+    public class AppDictionary : IBson
     {
         [BsonId]
         public ObjectId Id { get; set; }
-        public ObjectId CandidateId { get; set; }
-        public List<ContactEvent> Events { get; set; }
+        public List<string> Skills { get; set; }
+
     }
 }

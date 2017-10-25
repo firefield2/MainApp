@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MainApp.Models
+namespace MainApp.Models.Entities
 {
     public class Person : IBson
     {

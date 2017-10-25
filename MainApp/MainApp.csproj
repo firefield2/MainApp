@@ -105,6 +105,7 @@
     <Compile Include="Interfaces\IBson.cs" />
     <Compile Include="Models\Entities\ContactEvent.cs" />
     <Compile Include="Models\Entities\Cv.cs" />
+    <Compile Include="Models\Entities\AppDictionary.cs" />
     <Compile Include="Models\Entities\FinishedContract.cs" />
     <Compile Include="Models\Entities\Person.cs" />
     <Compile Include="Models\Entities\Company.cs" />
