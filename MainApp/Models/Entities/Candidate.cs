@@ -12,6 +12,7 @@ namespace MainApp.Models.Entities
             Rejected,
             Accepted
         }
+        public ObjectId PersonId { get; set; }
         public ObjectId ContractId { get; set; }
         public State CandidateState { get; set; }
         public ObjectId Id { get; set; }

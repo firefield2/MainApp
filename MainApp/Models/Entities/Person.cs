@@ -19,9 +19,9 @@ namespace MainApp.Models.Entities
         public string StreetAndNumber { get; set; }
         public string PhoneNumber { get; set; }
         public int AvailabilityInDays { get; set; }
-        public int Price { get; set; }
+        public int ExpectedSalary { get; set; }
         public List<Skill> Skills { get; set; }
         public List<WorkExpirience> Expirience { get; set; }
-        public List<Cv> Files { get; set; }
+        public List<File> Files { get; set; }
     }
 }

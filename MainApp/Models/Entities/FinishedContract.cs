@@ -13,8 +13,8 @@ namespace MainApp.Models.Entities
         [BsonId]
         public ObjectId Id { get; set; }
         public ObjectId CompanyId { get; set; }
-        public ObjectId PersonId { get; set; }
-        public int Salary { get; set; }
+        public ObjectId CandidateId { get; set; }
+        public int FinalSalary { get; set; }
 
         public DateTime WorkStart { get; set; }
         public DateTime WorkEnd { get; set; }

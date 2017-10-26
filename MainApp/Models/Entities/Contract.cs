@@ -19,7 +19,7 @@ namespace MainApp.Models.Entities
         public ObjectId Id { get; set; }
         public ObjectId CompanyId { get; set; }
 
-        public int NeededPersons { get; set; }
+        public int PersonsForContract { get; set; }
 
         public int StillNeededPersons { get; set; }
         public int Salary { get; set; }

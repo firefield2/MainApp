@@ -12,6 +12,7 @@ namespace MainApp.Controllers
 {
     public class TestController : ApiController
     {
+        //WARNING --!-- NUCLEAR WASTELAND --!--  FOR NUCLEAR TESTS ONLY
 
         // GET api/<controller>
         public IEnumerable<string> Get()
@@ -51,8 +52,8 @@ namespace MainApp.Controllers
                                 StartWork = DateTime.Now.Date,
                             }
                         },
-                        Files = new List<Cv>() {
-                            new Cv() {
+                        Files = new List<File>() {
+                            new File() {
                                 FileId = new ObjectId(),
                                 Description = "test",
                                 Name = "test",

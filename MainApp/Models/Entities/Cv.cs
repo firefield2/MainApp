@@ -2,7 +2,7 @@
 
 namespace MainApp.Models.Entities
 {
-    public class Cv
+    public class File
     {
         public string Name { get; set; }
         public string Description { get; set; }
