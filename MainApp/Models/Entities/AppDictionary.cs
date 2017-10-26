@@ -11,7 +11,9 @@ namespace MainApp.Models.Entities
     {
         [BsonId]
         public ObjectId Id { get; set; }
-        public List<string> Skills { get; set; }
+        public List<string> ProgramingLanguages { get; set; }
+        public List<string> SkillTypes { get; set; }
+        public List<string> Languages { get; set; }
 
     }
 }

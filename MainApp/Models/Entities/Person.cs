@@ -12,6 +12,7 @@ namespace MainApp.Models.Entities
         [BsonId]
         public ObjectId Id { get; set; }
         public string FirstName { get; set; }
+        public string SecondName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
@@ -20,6 +21,7 @@ namespace MainApp.Models.Entities
         public string PhoneNumber { get; set; }
         public int AvailabilityInDays { get; set; }
         public int ExpectedSalary { get; set; }
+        public List<Education> EducationList { get; set; }
         public List<Skill> Skills { get; set; }
         public List<WorkExpirience> Expirience { get; set; }
         public List<File> Files { get; set; }
