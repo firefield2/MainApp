@@ -15,10 +15,18 @@ namespace MainApp
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "DictionaryApi",
+                routeTemplate: "api/{controller}/{nameOfDictionary}/{type}",
+                defaults: new { type = RouteParameter.Optional }
             );
         }
     }

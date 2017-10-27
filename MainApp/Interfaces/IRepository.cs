@@ -11,5 +11,6 @@ namespace MainApp.Interfaces
         T FindById(ObjectId id);
         IEnumerable<T> List();
         void Update(T element);
+        IMongoCollection<T> GetCollection();
     }
 }

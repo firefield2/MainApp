@@ -14,12 +14,14 @@ namespace MainApp.Models
         IMongoCollection<T> collection;
         IMongoClient client;
         IMongoDatabase database;
+        string collectionName;
         public Repository(string collectionName)
         {
             client = new MongoClient("mongodb://localhost:27017");
             database = client.GetDatabase("MainApp");
             //database.DropCollection(collectionName);
-            GetCollection(collectionName);
+            this.collectionName = collectionName;
+            GetCollection();
 
         }
 
@@ -29,7 +31,7 @@ namespace MainApp.Models
             return collection.Find(new BsonDocument()).ToEnumerable();
         }
 
-        public IMongoCollection<T> GetCollection(string collectionName)
+        public IMongoCollection<T> GetCollection()
         {
             return collection = database.GetCollection<T>(collectionName);
         }
