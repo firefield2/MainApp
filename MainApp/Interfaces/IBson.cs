@@ -1,6 +1,6 @@
 ﻿
         using MongoDB.Bson;
-namespace MainApp.Models
+namespace MainApp.Interfaces
 
 {
         public interface IBson

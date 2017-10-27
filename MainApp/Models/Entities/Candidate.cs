@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MongoDB.Bson;
+using MainApp.Interfaces;
 
 namespace MainApp.Models.Entities
 {

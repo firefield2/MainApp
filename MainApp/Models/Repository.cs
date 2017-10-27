@@ -1,4 +1,5 @@
-﻿using MainApp.Models;
+﻿using MainApp.Interfaces;
+using MainApp.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -8,7 +9,7 @@ using System.Web;
 
 namespace MainApp.Models
 {
-    public class Repository<T> where T : IBson
+    public class Repository<T> : IRepository<T> where T : IBson
     {
         IMongoCollection<T> collection;
         IMongoClient client;

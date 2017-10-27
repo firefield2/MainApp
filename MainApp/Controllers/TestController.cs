@@ -37,7 +37,7 @@ namespace MainApp.Controllers
                         AvailabilityInDays = 30,
                         FirstName = "test",
                         LastName = "test",
-                        Price = 10000,
+                        ExpectedSalary = 10000,
                         Skills = new List<Skill>() {
                             new Skill() {
                                 Level = "test",
@@ -96,7 +96,7 @@ namespace MainApp.Controllers
                         CompanyId = new ObjectId(),
                         ContractState = Contract.State.Opened,
                         AvailabilityInDays = 30,
-                        NeededPersons = 3,
+                        PersonsForContract = 3,
                         StillNeededPersons = 2,
                         Salary = 1000,
                         Skills = new List<Skill>()
@@ -114,8 +114,8 @@ namespace MainApp.Controllers
                     database5.Add(new FinishedContract()
                     {
                         CompanyId = new ObjectId(),
-                        PersonId = new ObjectId(),
-                        Salary = 10000,
+                        CandidateId = new ObjectId(),
+                        FinalSalary = 10000,
                         WorkEnd = DateTime.Now,
                         WorkStart = DateTime.Now
                     });
@@ -133,11 +133,23 @@ namespace MainApp.Controllers
                     Repository<AppDictionary> database7 = new Repository<AppDictionary>("Dictionary");
                     database7.Add(new AppDictionary()
                     {
-                        Skills = new List<string>
+                        Skills =new List<DictionarySkill>
                         {
-                            "JS",
-                            "PHP", 
-                            "C#"
+                            new DictionarySkill()
+                            {
+                                Type = "Language",
+                                Name = "Angielski"
+                            },
+                            new DictionarySkill()
+                            {
+                                Type = "Programing Language",
+                                Name = "JS"
+                            }
+                        },
+                        SkillTypes = new List<string>
+                        {
+                            "Language",
+                            "Programing Language"
                         }
                     });
                     break;

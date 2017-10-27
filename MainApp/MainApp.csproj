@@ -98,12 +98,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IBson.cs" />
     <Compile Include="Models\Entities\ContactEvent.cs" />
+    <Compile Include="Models\Entities\DictionarySkill.cs" />
     <Compile Include="Models\Entities\Education.cs" />
     <Compile Include="Models\Entities\File.cs" />
     <Compile Include="Models\Entities\AppDictionary.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="Models\Entities\Contact.cs" />
     <Compile Include="Models\Entities\ContactHistory.cs" />
     <Compile Include="Models\Entities\Contract.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
     <Compile Include="Models\Entities\Candidate.cs" />
