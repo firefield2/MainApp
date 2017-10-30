@@ -29,8 +29,9 @@ namespace MainApp.Models
         }
         public static void Add(IRepository<AppDictionary> repository, string dictionary, string value, string type)
         {
-            if (!string.IsNullOrEmpty(type)) value = "[" + type + ", " + value + "]";
-            var str = @"{ $addToSet: { """+ dictionary+@"""  :  """ +value+ @""" }";
+            if (!string.IsNullOrEmpty(type)) value = string.Format(@"{{ ""Type"":""{0}"", ""Name"" :""{1}""}}", type, value);
+            else value = string.Format(@"""{0}""", value);
+            var str = string.Format(@"{{$addToSet:{{""{0}"":{1}}}}}", dictionary, value);
             var result = repository.GetCollection().UpdateOne("{}", str);
         }
     }
