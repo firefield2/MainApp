@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace MainApp.Controllers
 {
+    [RoutePrefix("api/dictionary")]
     public class DictionaryController : ApiController
     {
         IRepository<AppDictionary> repository = new Repository<AppDictionary>("Dictionary");
@@ -18,6 +19,7 @@ namespace MainApp.Controllers
         /// Pobiera słowniki z bazy danych
         /// </summary>
         /// <returns></returns>
+        [Route("")]
         public AppDictionary Get()
         {
             return repository.List().FirstOrDefault();
@@ -29,6 +31,7 @@ namespace MainApp.Controllers
         /// <param name="nameOfDictionary"></param>
         /// <returns>Array of values in json</returns>
         // GET: api/Dictionary/5
+        [Route("{nameOfDictionary}")]
         public List<string> Get(string nameOfDictionary)
         {
             return Dictionary.Get(repository, nameOfDictionary);
@@ -41,6 +44,7 @@ namespace MainApp.Controllers
         /// <param name="type"></param>
         /// <returns></returns>
         // GET: api/Dictionary/5/5
+        [Route("{nameOfDictionary}/{type}")]
         public List<string> Get(string nameOfDictionary , string type)
         {
             return Dictionary.Get(repository,nameOfDictionary, type);
@@ -50,16 +54,6 @@ namespace MainApp.Controllers
         public void Post([FromBody]List<string> data)
         {
             Dictionary.Add(repository, data[0], data[1], data[2]);
-        }
-
-        // PUT: api/Dictionary/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Dictionary/5
-        public void Delete(int id)
-        {
         }
     }
 }
