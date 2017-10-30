@@ -57,6 +57,9 @@
     <Reference Include="MongoDB.Driver.Core, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Driver.Core.2.4.4\lib\net45\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Driver.GridFS, Version=2.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.GridFS.2.4.4\lib\net45\MongoDB.Driver.GridFS.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.0.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
@@ -121,6 +124,7 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\DictionaryController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FinishedContractController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -141,6 +145,7 @@
     <Compile Include="Models\Entities\ContactHistory.cs" />
     <Compile Include="Models\Entities\Contract.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\FileTools.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Models\Entities\Skill.cs" />
     <Compile Include="Models\Entities\Candidate.cs" />
