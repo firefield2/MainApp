@@ -3,6 +3,7 @@ using MainApp.Models;
 using MainApp.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -13,7 +14,7 @@ namespace MainApp.Controllers
 {
     public class FileController : ApiController
     {
-        IRepository<Company> repository = new Repository<Company>("companies");
+        IRepository<Person> repository = new Repository<Person>("persons");
         // GET: api/File
         public IEnumerable<string> Get()
         {
@@ -27,7 +28,7 @@ namespace MainApp.Controllers
         }
 
         // POST: api/File
-        public async Task<HttpResponseMessage> Post(File file)
+        public async Task<HttpResponseMessage> Post(Models.Entities.File file)
         {
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
             try
@@ -36,8 +37,8 @@ namespace MainApp.Controllers
                 foreach (var fileItem in filedata.Contents)
                 {
                     var fileStream = await fileItem.ReadAsStreamAsync();
-                    
-                    FileTools.SaveFile(repository)
+
+                    file.FileId = FileTools.SaveFile(repository, fileStream as FileStream, file.Name);
                 }
 
                 response = Request.CreateResponse<bool>(HttpStatusCode.OK, true);
