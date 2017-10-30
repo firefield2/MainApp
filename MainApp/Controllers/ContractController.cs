@@ -4,6 +4,7 @@ using MainApp.Models.Entities;
 using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
+
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,35 +12,35 @@ using System.Web.Http;
 
 namespace MainApp.Controllers
 {
-    [RoutePrefix("api/company")]
-    public class CompanyController : ApiController
+    public class ContractController : ApiController
     {
-        IRepository<Company> repository = new Repository<Company>("companies");
-        // GET: api/Company
-        public IEnumerable<Company> Get()
+        IRepository<Contract> repository = new Repository<Contract>("contracts");
+        // GET: api/Contract
+        public IEnumerable<Contract> Get()
         {
             return repository.List();
         }
 
-        // GET: api/Company/5
-        public Company Get(string id)
+        // GET: api/Contract/5
+        public Contract Get(string id)
         {
             return repository.FindById(new ObjectId(id));
         }
 
-        // POST: api/Company
-        public void Post([FromBody]Company value)
+        // POST: api/Contract
+        public void Post([FromBody]Contract value)
         {
             repository.Add(value);
         }
-        // POST: api/Company
-        public void Post(string id,[FromBody]Company value)
+
+        // POST: api/Contract
+        public void Post(string id, [FromBody]Contract value)
         {
             value.Id = new ObjectId(id);
             repository.Update(value);
         }
 
-        // DELETE: api/Company/5
+        // DELETE: api/Contract/5
         public void Delete(string id)
         {
             repository.Delete(new ObjectId(id));

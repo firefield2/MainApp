@@ -98,6 +98,7 @@
             });
 
         }
+
         function deleteButtonClick() {
             $.ajax({
                 type: "DELETE",
@@ -130,13 +131,13 @@
         function addButtonClick(text) {
             $.ajax({
                 type: "POST",
-                url: "/api/Test/" + $("#_id").val(),
+                url: "/api/Company/",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                data: JSON.stringify({ "FirstName": $("#firstNameTB").val(), "LastName": $("#lastNameTB").val(), "PhoneNumber": $("#phoneTB").val(), "Adress": $("#adressTB").val() }),
+                data: JSON.stringify({ "Name": $("#firstNameTB").val(), "Country": $("#lastNameTB").val() }),
                 success: function () {
                     alert(text);
-                    refreshList();
+                    //refreshList();
                     $("#addButton").hide();
                     $("#updateButton").show();
                     $("#deleteButton").show();
@@ -151,27 +152,27 @@
             });
 
         }
-        function updateButtonClick(text) {
-            $.ajax({
-                type: "POST",
-                url: "/api/Test",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "_id": $("#_id").val(), "FirstName": $("#firstNameTB").val(), "LastName": $("#lastNameTB").val(), "PhoneNumber": $("#phoneTB").val(), "Adress": $("#adressTB").val() }),
-                success: function () {
-                    alert("Zaktualizowano dane!");
-                    refreshList();
-                }, //End of AJAX Success function
+        //function updateButtonClick(text) {
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "/api/Test",
+        //        contentType: "application/json; charset=utf-8",
+        //        dataType: "json",
+        //        data: JSON.stringify({ "_id": $("#_id").val(), "FirstName": $("#firstNameTB").val(), "LastName": $("#lastNameTB").val(), "PhoneNumber": $("#phoneTB").val(), "Adress": $("#adressTB").val() }),
+        //        success: function () {
+        //            alert("Zaktualizowano dane!");
+        //            refreshList();
+        //        }, //End of AJAX Success function
 
-                failure: function (data) {
-                    alert(data.responseText);
-                }, //End of AJAX failure function
-                error: function (data) {
-                    alert(data.responseText);
-                } //End of AJAX error function
-            });
+        //        failure: function (data) {
+        //            alert(data.responseText);
+        //        }, //End of AJAX failure function
+        //        error: function (data) {
+        //            alert(data.responseText);
+        //        } //End of AJAX error function
+        //    });
             
-        }
+        //}
         function fillForm(id) {
             $.ajax({
                 type: "GET",
