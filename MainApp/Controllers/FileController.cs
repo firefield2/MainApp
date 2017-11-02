@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 
 namespace MainApp.Controllers
@@ -28,26 +29,34 @@ namespace MainApp.Controllers
         }
 
         // POST: api/File
-        public async Task<HttpResponseMessage> Post(Models.Entities.File file)
+        public async Task<string> Post()
         {
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Unauthorized);
+            string fileId = "";
+            string root = HttpContext.Current.Server.MapPath("~/App_Data/tempFiles/");
             try
             {
-                var filedata = await Request.Content.ReadAsMultipartAsync(new MultipartMemoryStreamProvider());
-                foreach (var fileItem in filedata.Contents)
+
+                var provider = new MultipartFormDataStreamProvider(root);
+                var filedata = await Request.Content.ReadAsMultipartAsync(provider);
+                foreach (var fileItem in provider.FileData)
                 {
-                    var fileStream = await fileItem.ReadAsStreamAsync();
-
-                    file.FileId = FileTools.SaveFile(repository, fileStream as FileStream, file.Name);
+                    FileStream stream = System.IO.File.Open(fileItem.LocalFileName, FileMode.Open);
+                    var fileName= fileItem.Headers.ContentDisposition.FileName;
+                    fileName=  fileName.Trim().Substring(1, fileName.Length - 2);
+                    fileId = FileTools.SaveFile(repository, stream, fileName).ToString();
+                    System.IO.File.SetAttributes(fileItem.LocalFileName, FileAttributes.Normal);
+                    if (stream != null)
+                    {
+                        stream.Dispose();
+                    }
+                    System.IO.File.Delete(fileItem.LocalFileName);
                 }
-
-                response = Request.CreateResponse<bool>(HttpStatusCode.OK, true);
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
-                response = Request.CreateResponse<bool>(HttpStatusCode.InternalServerError, false);
+                var text = ex.Message;
             }
-            return response;
+            return fileId;
         }
 
         // PUT: api/File/5
