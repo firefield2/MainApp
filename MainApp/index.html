@@ -73,9 +73,15 @@
                         <progress></progress>
                     </div>
                     <div class="row top-buffer" id="fileDownload">
-                        <form id="fileUploadForm" class="input-group">
-                            <input class="btn btn-default" name="Name" type="text" placeholder="FileId"/>
-                            <button class="btn btn-default">Download</button>
+                        <form id="fileUploadForm" class="input-group" method="get" action="/api/file"> 
+                            <input class="btn btn-default" name="id" id="fileId" type="text" placeholder="FileId"/>
+                            <button type="button" class="btn btn-default" onclick="">Download</button>
+                        </form>
+                    </div>
+                    <div class="row top-buffer" id="fileDelete">
+                        <form id="fileUploadForm" class="input-group" method="get" action="/api/file">
+                            <input class="btn btn-default" name="id" id="fileIdForDelete" type="text" placeholder="FileId" />
+                            <button type="button" class="btn btn-default" onclick="deleteFileClick()">Delete</button>
                         </form>
                     </div>
                 </div>
@@ -91,6 +97,55 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="Scripts/bootstrap.js"></script>
     <script>
+                function deleteFileClick() {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/file/" + $("#fileIdForDelete").val(),
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Usunięto pomyślnie!");
+                    refreshList();
+                    clearButtonClick()
+                }, //End of AJAX Success function
+
+                failure: function (data) {
+                    alert(data.responseText);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert(data.responseText);
+                } //End of AJAX error function
+            });
+        }
+        function getFile() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var blob = this.response; //save the blob as usual
+
+                }
+            }
+            xhr.open('POST', 'reports/download');
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+            xhr.responseType = 'blob'; // the response will be a blob and not text
+            xhr.send(jData); 
+            //$.ajax({
+            //    type: "GET",
+            //    url: "/api/file/" + $("#fileId").val(),
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: "json",
+            //    success: function (data) {
+            //        alert("Succes");
+            //    }, //End of AJAX Success function
+
+            //    failure: function (data) {
+            //        alert("failure");
+            //    }, //End of AJAX failure function
+            //    error: function (data) {
+            //        alert("error");
+            //    } //End of AJAX error function
+            //});
+        }
         function testButtonClick() {
             var text = JSON.stringify(  [$("#firstNameTB").val(), $("#lastNameTB").val(), $("#phoneTB").val()] );
             alert(text);
@@ -169,39 +224,7 @@
             });
 
         }
-        //function updateButtonClick(text) {
-        //    $.ajax({
-        //        type: "POST",
-        //        url: "/api/Test",
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: "json",
-        //        data: JSON.stringify({ "_id": $("#_id").val(), "FirstName": $("#firstNameTB").val(), "LastName": $("#lastNameTB").val(), "PhoneNumber": $("#phoneTB").val(), "Adress": $("#adressTB").val() }),
-        //        success: function () {
-        //            alert("Zaktualizowano dane!");
-        //            refreshList();
-        //        }, //End of AJAX Success function
-
-        //        failure: function (data) {
-        //            alert(data.responseText);
-        //        }, //End of AJAX failure function
-        //        error: function (data) {
-        //            alert(data.responseText);
-        //        } //End of AJAX error function
-        //    });
-            
-        //}
         $('#fileUploadButton').on('click', function () {
-        //    jQuery.ajax({
-        //        type: 'POST',
-        //        url: "api/file/",
-        //        data: new FormData($("#fileUploadForm")[0]),
-        //        processData: false,
-        //        contentType: false,
-        //        success: function (returnval) {
-        //            $("#show1").html(returnval);
-        //            $('#show1').show();
-        //        }
-            //    });
             var data = new FormData($('#fileUploadForm')[0]);
             var fileId;
             $.ajax({
