@@ -128,6 +128,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FinishedContractController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
