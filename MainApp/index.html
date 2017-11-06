@@ -77,9 +77,10 @@
                         <progress></progress>
                     </div>
                     <div class="row top-buffer" id="fileDownload">
-                        <form id="fileUploadForm" class="input-group" method="get" action="/api/file">
+                        <form id="fileDownloadForm" class="input-group" method="get" action="/api/file/">
+                            <input class="btn btn-default" name="id" id="personFileId" type="text" placeholder="PersonId" />
                             <input class="btn btn-default" name="id" id="fileId" type="text" placeholder="FileId" />
-                            <button type="button" class="btn btn-default" onclick="">Download</button>
+                            <button type="submit" class="btn btn-default" onclick="">Download</button>
                         </form>
                     </div>
                     <div class="row top-buffer" id="fileDelete">
@@ -120,36 +121,17 @@
                 } //End of AJAX error function
             });
         }
-        function getFile() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
 
-                    var blob = this.response; //save the blob as usual
+        window.onload = function () {
+            var form = document.getElementById("fileDownloadForm");
+            form.onsubmit = function () {
+                var fileId = document.getElementById("fileId");
+                var personId = document.getElementById("personFileId");
+                window.location = "/api/file/" + personId.value + "/" + fileId.value;
+                return false;
+            };
+        };
 
-                }
-            }
-            xhr.open('POST', 'reports/download');
-            xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-            xhr.responseType = 'blob'; // the response will be a blob and not text
-            xhr.send(jData);
-            //$.ajax({
-            //    type: "GET",
-            //    url: "/api/file/" + $("#fileId").val(),
-            //    contentType: "application/json; charset=utf-8",
-            //    dataType: "json",
-            //    success: function (data) {
-            //        alert("Succes");
-            //    }, //End of AJAX Success function
-
-            //    failure: function (data) {
-            //        alert("failure");
-            //    }, //End of AJAX failure function
-            //    error: function (data) {
-            //        alert("error");
-            //    } //End of AJAX error function
-            //});
-        }
         function testButtonClick() {
             var text = JSON.stringify([$("#firstNameTB").val(), $("#lastNameTB").val(), $("#phoneTB").val()]);
             alert(text);
