@@ -46,7 +46,6 @@ namespace MainApp.Controllers
                 stream.Read(fileBytes, 0, fileBytes.Length);
                 file.Write(fileBytes, 0, fileBytes.Length);
             }
-
             response.Content = new StreamContent(new FileStream(root+files.Name, FileMode.Open,FileAccess.Read));
             response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
             response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
