@@ -34,6 +34,15 @@ namespace MainApp.Models
             bucket = new GridFSBucket(repository.Database);
             bucket.Delete(id);
         }
+        public static void AddFileInfoToPerson(IRepository<Person> repository, string personId, Entities.File file)
+        {
+            var builder = Builders<Person>.Filter;
+            var filter = builder.Eq("_id", ObjectId.Parse(personId));
+            var update = Builders<Person>.Update.Push("Files", file);
+            //var searchQuery = String.Format(@"{{_id : ");
+            //var updateQuery = String.Format(@"");
+            repository.GetCollection().UpdateOne(filter, update);
+        }
 
     }
 }

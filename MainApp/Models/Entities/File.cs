@@ -6,6 +6,6 @@ namespace MainApp.Models.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public ObjectId FileId { get; set; }
+        public string FileId { get; set; }
     }
 }

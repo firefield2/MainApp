@@ -15,7 +15,7 @@
         <div class="page-header">
             <h2>POC_API</h2>
         </div>
-        <div >
+        <div>
             <div class="row">
                 <div class="col-lg-4 col-sm-4">
                     <div class="panel panel-primary">
@@ -66,15 +66,19 @@
                         </form>
                     </div>
                     <div class="row top-buffer" id="fileUpload">
-                        <form id="fileUploadForm" class="input-group" enctype="multipart/form-data" method="post" action="/api/file/">
-                            <input class="btn btn-default" name="Name" type="file" />
+                        <form id="fileInfo" class="input-group">
+                            <input type="text" name="PresonId" placeholder="personId" id="filePersonId" />
+                            <input type="text" name="Description" placeholder="Opis" id="fileDescription" />
+                        </form>
+                        <form id="fileUploadForm" class="input-group" enctype="multipart/form-data">
+                            <input class="btn btn-default" name="Name" type="file" id="file" />
                             <input id="fileUploadButton" type="button" value="Upload" />
                         </form>
                         <progress></progress>
                     </div>
                     <div class="row top-buffer" id="fileDownload">
-                        <form id="fileUploadForm" class="input-group" method="get" action="/api/file"> 
-                            <input class="btn btn-default" name="id" id="fileId" type="text" placeholder="FileId"/>
+                        <form id="fileUploadForm" class="input-group" method="get" action="/api/file">
+                            <input class="btn btn-default" name="id" id="fileId" type="text" placeholder="FileId" />
                             <button type="button" class="btn btn-default" onclick="">Download</button>
                         </form>
                     </div>
@@ -97,7 +101,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="Scripts/bootstrap.js"></script>
     <script>
-                function deleteFileClick() {
+        function deleteFileClick() {
             $.ajax({
                 type: "DELETE",
                 url: "/api/file/" + $("#fileIdForDelete").val(),
@@ -128,7 +132,7 @@
             xhr.open('POST', 'reports/download');
             xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
             xhr.responseType = 'blob'; // the response will be a blob and not text
-            xhr.send(jData); 
+            xhr.send(jData);
             //$.ajax({
             //    type: "GET",
             //    url: "/api/file/" + $("#fileId").val(),
@@ -147,10 +151,10 @@
             //});
         }
         function testButtonClick() {
-            var text = JSON.stringify(  [$("#firstNameTB").val(), $("#lastNameTB").val(), $("#phoneTB").val()] );
+            var text = JSON.stringify([$("#firstNameTB").val(), $("#lastNameTB").val(), $("#phoneTB").val()]);
             alert(text);
             $.ajax({
-                
+
                 type: "POST",
                 url: "/api/Dictionary",
                 contentType: "application/json; charset=utf-8",
@@ -245,7 +249,7 @@
                     sendFileToPerson(data);
                 },
 
-                 //Custom XMLHttpRequest
+                //Custom XMLHttpRequest
                 xhr: function () {
                     var myXhr = $.ajaxSettings.xhr();
                     if (myXhr.upload) {
@@ -264,7 +268,33 @@
             });
         });
         function sendFileToPerson(fileId) {
-            alert("Nie zaimplementowano funkcji!");
+            var fullPath = $('#file').val();
+            var filename;
+            if (fullPath) {
+                var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+                filename = fullPath.substring(startIndex);
+                if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+                    filename = filename.substring(1);
+                }
+                alert(filename);
+            }
+            $.ajax({
+                type: "POST",
+                url: "/api/file/" + $("#filePersonId").val(),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify({ "Name": filename, "Description": $("#fileDescription").val(), "FileId": fileId }),
+                success: function () {
+                    alert("Udało się!");
+                }, //End of AJAX Success function
+
+                failure: function (data) {
+                    alert(data.responseText);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
         }
         function fillForm(id) {
             $.ajax({

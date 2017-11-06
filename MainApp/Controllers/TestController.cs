@@ -54,7 +54,7 @@ namespace MainApp.Controllers
                         },
                         Files = new List<File>() {
                             new File() {
-                                FileId = new ObjectId(),
+                                FileId = "000000000000000000000000",
                                 Description = "test",
                                 Name = "test",
                             }
